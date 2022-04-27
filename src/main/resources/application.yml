@@ -1,0 +1,26 @@
+#配置数据源
+spring:
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+  thymeleaf:
+      prefix: classpath:/templates/
+      suffix: .html
+      encoding: UTF-8
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.43.166:3306/pcp?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+  #配置静态
+  resources:
+    static-locations: classpath:/templates,classpath:/static/
+#mybatis配置
+mybatis-plus:
+  type-aliases-package: com.hz.pojo
+  mapper-locations: classpath:mappers/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印SQL语句
+#server:
+  #port: 8848

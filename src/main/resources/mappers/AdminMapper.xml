@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.dao.AdminDao">
+
+    <sql id="admin_where">
+        <where>
+            <if test="admin_name!=null">
+                admin_name like concat('%',#{admin_name},'%')
+            </if>
+        </where>
+    </sql>
+
+    <delete id="deleteAdminById">
+        delete from admin where admin_id=#{admin_id}
+    </delete>
+
+    <update id="updateAdmin" >
+        update admin set
+        admin_name=#{admin_name},admin_password=#{admin_password},
+        admin_phone=#{admin_phone},admin_role_autho_id=#{admin_role_autho_id},
+        admin_role_time=#{admin_role_time},admin_autho_id=#{admin_autho_id},
+        admin_autho_name=#{admin_autho_name},admin_usertime=#{admin_usertime},
+        admin_endtime=#{admin_endtime}where admin_id=#{admin_id}
+    </update>
+
+    <insert id="saveAdmin">
+        insert into admin(admin_name,admin_password,admin_phone,admin_role_autho_id,admin_role_time,
+        admin_autho_id,admin_autho_name,admin_usertime,admin_endtime)
+        values (#{admin_name},#{admin_password},#{admin_phone},#{admin_role_autho_id},#{admin_role_time},
+        #{admin_autho_id},#{admin_autho_name},#{admin_usertime},#{admin_endtime})
+    </insert>
+
+    <select id="findAdminList" resultType="Admin">
+        select * from admin
+        <include refid="admin_where"/>
+        order by admin_id asc limit #{pyl},#{pageSize}
+    </select>
+
+    <select id="AdminCount" resultType="Integer">
+        select count(1) from  admin
+        <include refid="admin_where"/>
+    </select>
+
+
+    <select id="findAdminById" resultType="Admin">
+        select * from admin where admin_id=#{admin_id}
+    </select>
+
+</mapper>
