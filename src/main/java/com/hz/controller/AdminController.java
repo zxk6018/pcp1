@@ -25,8 +25,8 @@ public class AdminController {
      */
     @ResponseBody
     @PostMapping("/login")
-    public MassageJson<String> login(String uname,String upwd){
-        return adminService.login(uname, upwd);
+    public MassageJson<String> login(String key,String password){
+        return adminService.login(key, password);
     }
 
 

@@ -29,11 +29,12 @@ public class AdminServiceImpl extends ServiceImpl<BaseMapper<Admin>,Admin> imple
      * @return
      */
     @Override
-    public MassageJson<String> login(String uname, String upwd) {
+    public MassageJson<String> login(String key, String password) {
 
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("admin_id",uname);
-        queryWrapper.eq("admin_password",upwd);
+        queryWrapper.eq("admin_id",key);
+        queryWrapper.eq("admin_password",password);
+        System.out.println("key==="+key+",password===="+password);
         Admin admin = adminDao.selectOne(queryWrapper);
         if (admin!=null){
             String token = UUID.randomUUID().toString().replace("-","");

@@ -12,7 +12,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: root
-    url: jdbc:mysql://192.168.43.166:3306/pcp?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/pcp?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
   #配置静态
   resources:
     static-locations: classpath:/templates,classpath:/static/
